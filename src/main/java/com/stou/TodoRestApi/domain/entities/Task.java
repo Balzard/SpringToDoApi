@@ -3,6 +3,8 @@ package com.stou.TodoRestApi.domain.entities;
 import java.sql.Date;
 import java.util.UUID;
 
+import com.stou.TodoRestApi.domain.dto.TaskDto;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -19,11 +21,19 @@ public class Task {
     @JoinColumn(name = "task_id")
     private User user;
 
-    public Task(String description, Date limDate, User user) {
-        this.id = UUID.randomUUID().toString();
-        this.description = description;
-        this.limDate = limDate;
-        this.user = user;
+    // public Task(String description, Date limDate, User user) {
+    //     this.id = UUID.randomUUID().toString();
+    //     this.description = description;
+    //     this.limDate = limDate;
+    //     this.user = user;
+    // }
+
+    public static Task from(TaskDto taskDto){
+        return new Task()
+        .setId(taskDto.getId())
+        .setDescription(taskDto.getDescription())
+        .setLimDate(taskDto.getLimDate())
+        .setUser(taskDto.getUser());
     }
 
     public String getId() {

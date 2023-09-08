@@ -9,6 +9,8 @@ import com.stou.TodoRestApi.domain.entities.Task;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stou.TodoRestApi.domain.dto.TaskDto;
@@ -38,7 +40,11 @@ public class TaskController {
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
-    // @PostMapping("")
-    // public ResponseEntity<TaskDto> createTask()
+    @PostMapping(path = "/tasks")
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto taskDto) {
+        Task task = Task.from(taskDto);
+        Task savedTask = taskService.addTask(task);
+        return new ResponseEntity<TaskDto>(TaskDto.from(savedTask), HttpStatus.CREATED);
+    }
     
 }

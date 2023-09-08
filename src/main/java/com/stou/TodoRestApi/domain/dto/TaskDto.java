@@ -2,6 +2,7 @@ package com.stou.TodoRestApi.domain.dto;
 
 import java.sql.Date;
 import com.stou.TodoRestApi.domain.entities.Task;
+import com.stou.TodoRestApi.domain.entities.User;
 
 public class TaskDto {
     
@@ -11,11 +12,14 @@ public class TaskDto {
 
     private Date limDate;
 
+    private User user;
+
     public static TaskDto from(Task task){
         return new TaskDto()
         .setId(task.getId())
         .setDescription(task.getDescription())
-        .setLimDate(task.getLimDate());
+        .setLimDate(task.getLimDate())
+        .setUser(task.getUser());
     }
 
     public String getId() {
@@ -44,4 +48,14 @@ public class TaskDto {
         this.limDate = limDate;
         return this;
     }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public TaskDto setUser(User user) {
+        this.user = user;
+        return this;
+    }
+
 }
