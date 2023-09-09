@@ -1,34 +1,29 @@
-package com.stou.TodoRestApi.domain.entities;
+package com.stou.TodoRestApi.controllers.dto;
 
 import java.sql.Date;
-import java.util.UUID;
 
-import com.stou.TodoRestApi.domain.dto.TaskDto;
+import com.stou.TodoRestApi.Model.entities.Task;
+import com.stou.TodoRestApi.Model.entities.User;
 
-import jakarta.persistence.*;
-
-@Entity
-public class Task {
-
-    @Id
+public class TaskDto {
+    
     private String id;
 
     private String description;
 
     private Date limDate;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_id")
     private User user;
 
-    // public Task(String description, Date limDate, User user) {
-    //     this.id = UUID.randomUUID().toString();
-    //     this.description = description;
-    //     this.limDate = limDate;
-    //     this.user = user;
-    // }
+    public static TaskDto from(Task task){
+        return new TaskDto()
+        .setId(task.getId())
+        .setDescription(task.getDescription())
+        .setLimDate(task.getLimDate())
+        .setUser(task.getUser());
+    }
 
-    public static Task from(TaskDto taskDto){
+    public static Task to(TaskDto taskDto) {
         return new Task()
         .setId(taskDto.getId())
         .setDescription(taskDto.getDescription())
@@ -40,7 +35,7 @@ public class Task {
         return this.id;
     }
 
-    public Task setId(String id) {
+    public TaskDto setId(String id) {
         this.id = id;
         return this;
     }
@@ -49,7 +44,7 @@ public class Task {
         return this.description;
     }
 
-    public Task setDescription(String description) {
+    public TaskDto setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -58,17 +53,16 @@ public class Task {
         return this.limDate;
     }
 
-    public Task setLimDate(Date limDate) {
+    public TaskDto setLimDate(Date limDate) {
         this.limDate = limDate;
         return this;
     }
-
 
     public User getUser() {
         return this.user;
     }
 
-    public Task setUser(User user) {
+    public TaskDto setUser(User user) {
         this.user = user;
         return this;
     }

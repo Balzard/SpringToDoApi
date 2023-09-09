@@ -2,13 +2,14 @@ package com.stou.TodoRestApi.services;
 
 import java.util.Optional;
 
-import com.stou.TodoRestApi.domain.entities.Task;
+import com.stou.TodoRestApi.Model.entities.Task;
+import com.stou.TodoRestApi.controllers.dto.TaskDto;
 
 public interface TaskService {
 
-    Task addTask(Task task);
+    Task create(Task task);
 
-    Optional<Task> findOne(String id);
+    TaskDto findOne(String id);
 
     void delete(String id);
     

@@ -1,6 +1,6 @@
-package com.stou.TodoRestApi.domain.dto;
+package com.stou.TodoRestApi.controllers.dto;
 
-import com.stou.TodoRestApi.domain.entities.User;
+import com.stou.TodoRestApi.Model.entities.User;
 
 public class UserDto {
 

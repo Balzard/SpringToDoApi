@@ -1,4 +1,4 @@
-package com.stou.TodoRestApi.domain.entities;
+package com.stou.TodoRestApi.Model.entities;
 
 import java.util.UUID;
 import jakarta.persistence.Entity;
