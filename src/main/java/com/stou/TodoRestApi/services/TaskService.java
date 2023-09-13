@@ -1,16 +1,17 @@
 package com.stou.TodoRestApi.services;
 
-import java.util.Optional;
-
+import java.util.List;
 import com.stou.TodoRestApi.Model.entities.Task;
-import com.stou.TodoRestApi.controllers.dto.TaskDto;
+import com.stou.TodoRestApi.controllers.dto.TaskRequest;
 
 public interface TaskService {
 
-    Task create(Task task);
+    Task create(TaskRequest task);
 
-    TaskDto findOne(String id);
+    Task readOne(String id);
 
     void delete(String id);
+
+    List<Task> readAll();
     
 }

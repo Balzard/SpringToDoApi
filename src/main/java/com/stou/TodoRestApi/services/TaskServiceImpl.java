@@ -1,11 +1,9 @@
 package com.stou.TodoRestApi.services;
-
-import java.util.Optional;
-
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.stou.TodoRestApi.Model.entities.Task;
-import com.stou.TodoRestApi.controllers.dto.TaskDto;
+import com.stou.TodoRestApi.controllers.dto.TaskRequest;
 import com.stou.TodoRestApi.repositories.TaskRepository;
 
 @Service
@@ -18,15 +16,18 @@ public class TaskServiceImpl implements TaskService{
     }
 
     @Override
-    public TaskDto findOne(String id) {
-        Optional<Task> task = taskRepository.findById(id);
-        return task.map(taskEntity -> {
-            return TaskDto.from(taskEntity);
-        }).orElse(null); // je savais pas quoi return
+    public Task readOne(String id) {
+        return taskRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("un message bidon"));
     }
 
     @Override
-    public Task create(Task task) {
+    public List<Task> readAll() {
+        return taskRepository.findAll();
+    }
+
+    @Override
+    public Task create(TaskRequest taskRequest) {
+        Task task = new Task().setDescription(taskRequest.getDescription());
         return taskRepository.save(task);
     }
 

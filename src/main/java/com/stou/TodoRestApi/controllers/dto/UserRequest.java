@@ -1,34 +1,28 @@
-package com.stou.TodoRestApi.Model.entities;
+package com.stou.TodoRestApi.controllers.dto;
 
-import java.util.UUID;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class UserRequest {
 
-@Entity
-@Table(name="users")
-public class User {
-
-    @Id
     private String id;
 
     private String firstName;
 
     private String secondName;
 
-    public User() {
-        this.id = UUID.randomUUID().toString();
-    }
 
     public String getId() {
         return this.id;
+    }
+
+    public UserRequest setId(String id) {
+        this.id = id;
+        return this;
     }
 
     public String getFirstName() {
         return this.firstName;
     }
 
-    public User setFirstName(String firstName) {
+    public UserRequest setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -37,7 +31,7 @@ public class User {
         return this.secondName;
     }
 
-    public User setSecondName(String secondName) {
+    public UserRequest setSecondName(String secondName) {
         this.secondName = secondName;
         return this;
     }
