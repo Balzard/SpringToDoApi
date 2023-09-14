@@ -1,6 +1,6 @@
 package com.stou.TodoRestApi.controllers.dto;
 
-public class UserRequest {
+public class UserCreationDto {
 
     private String id;
 
@@ -13,7 +13,7 @@ public class UserRequest {
         return this.id;
     }
 
-    public UserRequest setId(String id) {
+    public UserCreationDto setId(String id) {
         this.id = id;
         return this;
     }
@@ -22,7 +22,7 @@ public class UserRequest {
         return this.firstName;
     }
 
-    public UserRequest setFirstName(String firstName) {
+    public UserCreationDto setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -31,7 +31,7 @@ public class UserRequest {
         return this.secondName;
     }
 
-    public UserRequest setSecondName(String secondName) {
+    public UserCreationDto setSecondName(String secondName) {
         this.secondName = secondName;
         return this;
     }

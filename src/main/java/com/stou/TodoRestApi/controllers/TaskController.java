@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import com.stou.TodoRestApi.Model.entities.Task;
 import com.stou.TodoRestApi.controllers.dto.TaskDto;
-import com.stou.TodoRestApi.controllers.dto.TaskRequest;
+import com.stou.TodoRestApi.controllers.dto.TaskCreationDto;
 import com.stou.TodoRestApi.services.TaskService;
 
 @RestController
@@ -23,7 +24,7 @@ public class TaskController {
     }
 
     @PostMapping(path = "/tasks")
-    public TaskDto createTask(@RequestBody TaskRequest taskRequest) {
+    public TaskDto createTask(@RequestBody TaskCreationDto taskRequest) {
         Task savedTask = taskService.create(taskRequest);
         return TaskDto.from(savedTask);
     }
@@ -34,9 +35,9 @@ public class TaskController {
     }
 
     @DeleteMapping(path = "/tasks/{id}")
-    public HttpStatus deleteTask(@PathVariable("id") String id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteTask(@PathVariable("id") String id) {
         taskService.delete(id);
-        return HttpStatus.NO_CONTENT;
     }
 
     @GetMapping(path = "/tasks")

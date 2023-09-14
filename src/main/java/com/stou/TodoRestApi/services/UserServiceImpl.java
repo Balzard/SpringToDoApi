@@ -3,7 +3,7 @@ package com.stou.TodoRestApi.services;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.stou.TodoRestApi.Model.entities.User;
-import com.stou.TodoRestApi.controllers.dto.UserRequest;
+import com.stou.TodoRestApi.controllers.dto.UserCreationDto;
 import com.stou.TodoRestApi.repositories.UserRepository;
 
 @Service
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(UserRequest user) {
+    public User create(UserCreationDto user) {
         User savedUser = new User().setFirstName(user.getFirstName()).setSecondName(user.getSecondName());
         return this.userRepository.save(savedUser);
     }
@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean isExists(String id) {
+    public boolean exists(String id) {
         return this.userRepository.existsById(id);
     }
     

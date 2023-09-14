@@ -13,8 +13,8 @@ public class UserDto {
     public static UserDto from(User user) {
         return new UserDto()
         .setId(user.getId())
-        .setFirstName(user.getFirstName())
-        .setSecondName(user.getSecondName());
+        .setFirstName(user.getFirstName().orElse("dodo"))
+        .setSecondName(user.getSecondName().orElse("merde"));
     }
 
     public String getId() {

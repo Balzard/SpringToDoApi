@@ -14,11 +14,15 @@ public class Task {
     private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
     private User user;
 
     public Task() {
+        
+    }
+
+    public Task(User user) {
         this.id = UUID.randomUUID().toString();
+        this.user = user;
     }
 
     public String getId() {
@@ -36,11 +40,6 @@ public class Task {
 
     public User getUser() {
         return this.user;
-    }
-
-    public Task setUser(User user) {
-        this.user = user;
-        return this;
     }
 
 }

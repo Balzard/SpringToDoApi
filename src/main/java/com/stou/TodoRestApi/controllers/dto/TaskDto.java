@@ -1,7 +1,6 @@
 package com.stou.TodoRestApi.controllers.dto;
 
 import com.stou.TodoRestApi.Model.entities.Task;
-import com.stou.TodoRestApi.Model.entities.User;
 
 public class TaskDto {
     
@@ -9,13 +8,13 @@ public class TaskDto {
 
     private String description;
 
-    private User user;
+    private UserDto user;
 
     public static TaskDto from(Task task){
         return new TaskDto()
         .setId(task.getId())
         .setDescription(task.getDescription())
-        .setUser(task.getUser());
+        .setUser(UserDto.from(task.getUser()));
     }
 
     public String getId() {
@@ -36,11 +35,11 @@ public class TaskDto {
         return this;
     }
 
-    public User getUser() {
+    public UserDto getUser() {
         return this.user;
     }
 
-    public TaskDto setUser(User user) {
+    public TaskDto setUser(UserDto user) {
         this.user = user;
         return this;
     }

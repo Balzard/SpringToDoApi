@@ -1,5 +1,6 @@
 package com.stou.TodoRestApi.Model.entities;
 
+import java.util.Optional;
 import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -24,8 +25,8 @@ public class User {
         return this.id;
     }
 
-    public String getFirstName() {
-        return this.firstName;
+    public Optional<String> getFirstName() {
+        return Optional.ofNullable(firstName);
     }
 
     public User setFirstName(String firstName) {
@@ -33,8 +34,8 @@ public class User {
         return this;
     }
 
-    public String getSecondName() {
-        return this.secondName;
+    public Optional<String> getSecondName() {
+        return Optional.ofNullable(secondName);
     }
 
     public User setSecondName(String secondName) {
