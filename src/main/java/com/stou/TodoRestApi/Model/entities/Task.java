@@ -14,7 +14,7 @@ public class Task {
     private String description;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Task() {

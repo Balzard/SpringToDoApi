@@ -35,5 +35,10 @@ public class UserServiceImpl implements UserService {
     public List<User> readAll() {
         return this.userRepository.findAll();
     }
+
+    @Override
+    public boolean isExists(String id) {
+        return this.userRepository.existsById(id);
+    }
     
 }

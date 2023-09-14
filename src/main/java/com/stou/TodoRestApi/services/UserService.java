@@ -13,5 +13,7 @@ public interface UserService {
     void delete(String id);
 
     List<User> readAll();
+
+    boolean isExists(String id);
     
 }
