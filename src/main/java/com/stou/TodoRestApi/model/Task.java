@@ -1,4 +1,4 @@
-package com.stou.TodoRestApi.Model.entities;
+package com.stou.TodoRestApi.model;
 
 import java.util.UUID;
 
@@ -13,16 +13,19 @@ public class Task {
 
     private String description;
 
+    private TaskType type;
+
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
 
     public Task() {
-        
+
     }
 
-    public Task(User user) {
+    public Task(User user, TaskType type) {
         this.id = UUID.randomUUID().toString();
         this.user = user;
+        this.type = type;
     }
 
     public String getId() {
@@ -40,6 +43,10 @@ public class Task {
 
     public User getUser() {
         return this.user;
+    }
+
+    public TaskType getType() {
+        return this.type;
     }
 
 }

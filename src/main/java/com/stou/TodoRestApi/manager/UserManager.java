@@ -1,10 +1,11 @@
-package com.stou.TodoRestApi.services;
+package com.stou.TodoRestApi.manager;
 
 import java.util.List;
-import com.stou.TodoRestApi.Model.entities.User;
-import com.stou.TodoRestApi.controllers.dto.UserCreationDto;
 
-public interface UserService {
+import com.stou.TodoRestApi.controllers.dto.UserCreationDto;
+import com.stou.TodoRestApi.model.User;
+
+public interface UserManager {
 
     User create(UserCreationDto user);
 

@@ -1,4 +1,4 @@
-package com.stou.TodoRestApi.Model.entities;
+package com.stou.TodoRestApi.model;
 
 import java.util.Optional;
 import java.util.UUID;

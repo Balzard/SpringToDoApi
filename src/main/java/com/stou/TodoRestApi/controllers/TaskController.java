@@ -7,19 +7,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import com.stou.TodoRestApi.Model.entities.Task;
+
 import com.stou.TodoRestApi.controllers.dto.TaskDto;
+import com.stou.TodoRestApi.manager.TaskManager;
+import com.stou.TodoRestApi.model.Task;
+import com.stou.TodoRestApi.model.TaskType;
 import com.stou.TodoRestApi.controllers.dto.TaskCreationDto;
-import com.stou.TodoRestApi.services.TaskService;
 
 @RestController
 public class TaskController {
 
-    private final TaskService taskService;
+    private final TaskManager taskService;
 
-    public TaskController(TaskService taskService){
+    public TaskController(TaskManager taskService){
         this.taskService = taskService;
     }
 
@@ -41,8 +44,8 @@ public class TaskController {
     }
 
     @GetMapping(path = "/tasks")
-    public List<TaskDto> getTasks() {
-        List<Task> tasks = taskService.readAll();
+    public List<TaskDto> getTasks(@RequestParam(required = false) TaskType taskType) {
+        List<Task> tasks = taskService.readAll(taskType);
         return tasks.stream()
             .map(TaskDto::from)
             .toList();

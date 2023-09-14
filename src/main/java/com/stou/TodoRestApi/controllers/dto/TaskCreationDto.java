@@ -1,10 +1,14 @@
 package com.stou.TodoRestApi.controllers.dto;
 
+import com.stou.TodoRestApi.model.TaskType;
+
 public class TaskCreationDto {
 
     private String description;
 
     private String userId;
+
+    private TaskType type;
 
 
     public String getDescription() {
@@ -24,5 +28,16 @@ public class TaskCreationDto {
         this.userId = userId;
         return this;
     }
+
+
+    public TaskType getType() {
+        return this.type;
+    }
+
+    public TaskCreationDto setType(TaskType type) {
+        this.type = type;
+        return this;
+    }
+
 
 }

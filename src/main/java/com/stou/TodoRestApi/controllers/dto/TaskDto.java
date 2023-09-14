@@ -1,6 +1,6 @@
 package com.stou.TodoRestApi.controllers.dto;
 
-import com.stou.TodoRestApi.Model.entities.Task;
+import com.stou.TodoRestApi.model.Task;
 
 public class TaskDto {
     

@@ -1,17 +1,18 @@
-package com.stou.TodoRestApi.services;
+package com.stou.TodoRestApi.manager;
 
 import java.util.List;
 import org.springframework.stereotype.Service;
-import com.stou.TodoRestApi.Model.entities.User;
+
 import com.stou.TodoRestApi.controllers.dto.UserCreationDto;
+import com.stou.TodoRestApi.model.User;
 import com.stou.TodoRestApi.repositories.UserRepository;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserManagerImpl implements UserManager {
 
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserManagerImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
